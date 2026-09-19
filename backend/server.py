@@ -165,6 +165,9 @@ async def startup():
 async def shutdown():
     client.close()
 
+@app.get("/")
+async def home():
+    return {"message": "Fortune Ox Game API is running"}
 app.include_router(api_router)
 
 origins = [x.strip() for x in os.environ.get("CORS_ORIGINS", "*").split(",") if x.strip()]
